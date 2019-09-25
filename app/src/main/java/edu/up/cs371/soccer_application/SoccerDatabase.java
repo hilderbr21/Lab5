@@ -18,6 +18,8 @@ import java.util.*;
  */
 public class SoccerDatabase implements SoccerDB {
 
+    Hashtable <String, SoccerPlayer> playerDB = new Hashtable<String, SoccerPlayer>();
+
     /**
      * add a player
      *
@@ -26,7 +28,16 @@ public class SoccerDatabase implements SoccerDB {
     @Override
 	public boolean addPlayer(String firstName, String lastName,
 			int uniformNumber, String teamName) {
-        return false;
+
+        if(playerDB.get(firstName + " ## " + lastName) == null){
+            SoccerPlayer temp = new SoccerPlayer(firstName, lastName, uniformNumber, teamName);
+            playerDB.put(firstName + " ## " + lastName, temp);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
     /**
@@ -36,7 +47,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean removePlayer(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            playerDB.remove(firstName + " ## " + lastName);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -46,7 +64,15 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
 	public SoccerPlayer getPlayer(String firstName, String lastName) {
-        return null;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+
+            return playerDB.get(firstName + " ## " + lastName);
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     /**
@@ -56,7 +82,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpGoals(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpGoals();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -66,7 +99,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpAssists(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpAssists();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -76,7 +116,15 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpShots(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpShots();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     /**
@@ -86,7 +134,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpSaves(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpSaves();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -96,7 +151,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpFouls(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpFouls();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -106,7 +168,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpYellowCards(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpYellowCards();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -116,7 +185,14 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean bumpRedCards(String firstName, String lastName) {
-        return false;
+        if(playerDB.get(firstName + " ## " + lastName) != null){
+            getPlayer(firstName, lastName).bumpRedCards();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
