@@ -224,23 +224,25 @@ public class SoccerDatabase implements SoccerDB {
 	// get the nTH player
 	@Override
     public SoccerPlayer playerNum(int idx, String teamName) {
-        int numberOfPlayers = 0;
-        int numTeamPlayers = 0;
-        SoccerPlayer player;
-        if (teamName == null) {
-            numberOfPlayers = playerDB.size();
-        } else {
+        int numTeamPlayers = -1;
+        if (teamName != null) {
             for (SoccerPlayer temp : playerDB.values()) {
                 if (temp.getTeamName().equals(teamName)) {
-                    numberOfPlayers++;
-                    if(idx == numTeamPlayers)
-                    {
-                        player = temp;
+                    numTeamPlayers++;
+                    if(idx == numTeamPlayers) {
+                        return temp;
                     }
                 }
             }
         }
-        return player;
+        for (SoccerPlayer temp : playerDB.values()) {
+            numTeamPlayers++;
+                if(idx == numTeamPlayers) {
+                    return temp;
+                }
+        }
+
+     return null;
     }
 
     /**
